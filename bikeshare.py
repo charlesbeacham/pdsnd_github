@@ -31,7 +31,6 @@ def get_filters():
                 break
             print('\n',dash,'\nThat is not a city on the list, please try again.  Type the name of the city exactly as displayed above.\n',dash,'\n')
 
-
     # get user input for month (all, january, february, ... , june)
     while True:
         try:
@@ -54,10 +53,8 @@ def get_filters():
                 break
             print('\n',dash,'\nThat is not a valid entry for day. Please type the full name of the day or type "all" to see all days.\n',dash,'\n')
 
-
     print('-'*40)
     return city, month, day
-
 
 def load_data(city, month, day):
     """
@@ -83,8 +80,7 @@ def load_data(city, month, day):
     if month != 'all':
         # use the index of the months list to get the corresponding int
         months = ['january', 'february', 'march', 'april', 'may', 'june']
-        month = months.index(month) + 1
-        
+        month = months.index(month) + 1       
 
         # filter by month to create the new dataframe
         df = df.loc[df['month'] == month]
@@ -93,10 +89,8 @@ def load_data(city, month, day):
     if day != 'all':
         # filter by day of week to create the new dataframe
         df = df.loc[df['day_of_week'] == day.title()]
-
-  
+ 
     return df
-
 
 def time_stats(df):
     """Displays statistics on the most frequent times of travel."""
@@ -122,7 +116,6 @@ def time_stats(df):
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
-
 def station_stats(df):
     """Displays statistics on the most popular stations and trip."""
 
@@ -144,7 +137,6 @@ def station_stats(df):
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
-
 
 def trip_duration_stats(df):
     """Displays statistics on the total and average trip duration."""
@@ -213,12 +205,8 @@ def trip_duration_stats(df):
 
     print('\nThe average travel-time from "{}" to "{}" took {:,} minutes, but the inverse travel-time average from "{}" to "{}" took {:,} minutes for an absolute difference of {:,} minutes.  Among all the travel-time averages from A-->B as compared to their travel-time averages from B-->A, this trip had the largest absolute difference between the two.\n'.format(A,B,A_to_B_avg,B,A,B_to_A_avg,max_difference))
     #Calculate trip avg max distance end
-
-
-
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
-
 
 def user_stats(df):
     """Displays statistics on bikeshare users."""
@@ -239,7 +227,6 @@ def user_stats(df):
         for index,value in gender_series.items():
             print('{:,} trips were completed by {}s.\n'.format(value,index.lower()))
     
-
     # Display earliest, most recent, and most common year of birth
     if 'Birth Year' in df:
         earliest_year = int(df['Birth Year'].min())
@@ -271,9 +258,6 @@ def print_raw_data(df):
                     break
                 print('\n',dash,'\nThat is not a valid entry, please try again.  Would you like to continue seeing raw data 5 rows at a time? Enter yes or no.\n',dash,'\n')
         
-        
-
-
 def main():
     while True:
         city, month, day = get_filters()
