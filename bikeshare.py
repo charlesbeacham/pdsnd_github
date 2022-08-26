@@ -32,7 +32,7 @@ def get_filters():
             print('\n',dash,'\nThat is not a city on the list, please try again.  Type the name of the city exactly as displayed above.\n',dash,'\n')
 
 
-    # get user input for month (all, january, february, ... , june)
+    # get user input for month (all, January, February, ... , June)
     while True:
         try:
             month = input('\nPlesae input a month to analyze between January and June.  Type the whole month name (ex. january, february, etc...). If you would like to analyze the whole file, type "all" without quotes: ').lower()
@@ -43,7 +43,7 @@ def get_filters():
                 break
             print('\n',dash,'\nThat is not a valid entry for month. Please type the full name of the month or type "all" to see all months.\n',dash,'\n')
 
-    # get user input for day of week (all, monday, tuesday, ... sunday)
+    # get user input for day of week (all, Monday, Tuesday, ... Sunday)
     while True:
         try:
             day = input('\nPlesae input a day of the week to analyze.  Type the whole day name (ex. monday, tuesday, etc...). If you would like to analyze all days, type "all" without quotes: ').lower()
@@ -104,16 +104,16 @@ def time_stats(df):
     print('\nCalculating The Most Frequent Times of Travel...\n')
     start_time = time.time()
 
-    # display the most common month
+    # Print the most common month
     months = ['january', 'february', 'march', 'april', 'may', 'june']
     month = months[df['month'].mode()[0]-1].title()
     print('\nThe most common month for travel is {}.\n'.format(month))
 
-    # display the most common day of week
+    # Print the most common day of week
     top_day_of_week = df['day_of_week'].mode()[0]
     print('\nThe most common day of the week for travel is {}.\n'.format(top_day_of_week))
 
-    # display the most common start hour
+    # Print the most common start hour
     df['hour'] = df['Start Time'].dt.hour
     top_hour = df['hour'].mode()[0]
     print('\nThe most common hour of the day for travel is {} o\'clock (24h time format).\n'.format(top_hour))
